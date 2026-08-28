@@ -79,7 +79,7 @@ ESADP/
 ├── tests/                         # Data quality and pipeline tests
 └── README.md
 
-
+```
 
 ## Tech Stack
 
@@ -119,7 +119,7 @@ pip install -r requirements.txt
 # Create the Bronze/Silver/Gold schemas
 psql -U <user> -d <database> -f sql/ddl/00_create_schemas.sql
 psql -U <user> -d <database> -f sql/ddl/01_bronze_staging.sql
-```
+
 
 ### Running the ingestion pipeline
 
