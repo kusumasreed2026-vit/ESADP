@@ -51,32 +51,34 @@ All ten systems named in the use case are represented using real, publicly avail
 Full source-to-format rationale is documented in [`docs/BRD.md`](docs/BRD.md), Section 2.4.
 
 ## Repository Structure
+```text
 ESADP/
-├── docs/ # BRD, architecture, data dictionary, lineage, glossary
-├── config/ # Environment and connection configuration
+├── docs/                         # BRD, architecture, data dictionary, lineage, glossary
+├── config/                       # Environment and connection configuration
 ├── datasets/
-│ ├── bronze/
-│ │ ├── ingestion/ # Raw source exports as received
-│ │ └── staging/ # PostgreSQL staging table definitions
-│ ├── silver/
-│ │ ├── cleansing/ # Cleansing scripts and rules
-│ │ ├── validation/ # Data quality checks
-│ │ └── transformations/ # Business-rule transformations
-│ └── gold/
-│ ├── warehouse/ # Star schema DDL (fact + dimension tables)
-│ ├── datamarts/ # Subject-area views
-│ └── analytics/ # Analytics-ready exports
+│   ├── bronze/
+│   │   ├── ingestion/            # Raw source exports as received
+│   │   └── staging/              # PostgreSQL staging table definitions
+│   ├── silver/
+│   │   ├── cleansing/            # Cleansing scripts and rules
+│   │   ├── validation/           # Data quality checks
+│   │   └── transformations/      # Business-rule transformations
+│   └── gold/
+│       ├── warehouse/             # Star schema DDL (fact + dimension tables)
+│       ├── datamarts/             # Subject-area views
+│       └── analytics/             # Analytics-ready exports
 ├── pentaho/
-│ ├── transformations/ # .ktr transformation files
-│ └── jobs/ # .kjb orchestration jobs
-├── python/ # Profiling, cleansing, and generation scripts
-├── sql/ # DDL, reporting, and reconciliation queries
-├── metadata/ # Data dictionary and technical metadata
-├── lineage/ # Source-to-target mapping and lineage docs
-├── dashboards/ # Power BI .pbix files
-├── deployment/ # Setup and deployment scripts
-├── tests/ # Data quality and pipeline tests
+│   ├── transformations/           # .ktr transformation files
+│   └── jobs/                      # .kjb orchestration jobs
+├── python/                        # Profiling, cleansing, and generation scripts
+├── sql/                           # DDL, reporting, and reconciliation queries
+├── metadata/                      # Data dictionary and technical metadata
+├── lineage/                       # Source-to-target mapping and lineage docs
+├── dashboards/                    # Power BI .pbix files
+├── deployment/                    # Setup and deployment scripts
+├── tests/                         # Data quality and pipeline tests
 └── README.md
+
 
 
 ## Tech Stack
