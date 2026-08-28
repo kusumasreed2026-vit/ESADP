@@ -51,3 +51,120 @@ All ten systems named in the use case are represented using real, publicly avail
 Full source-to-format rationale is documented in [`docs/BRD.md`](docs/BRD.md), Section 2.4.
 
 ## Repository Structure
+ESADP/
+├── docs/ # BRD, architecture, data dictionary, lineage, glossary
+├── config/ # Environment and connection configuration
+├── datasets/
+│ ├── bronze/
+│ │ ├── ingestion/ # Raw source exports as received
+│ │ └── staging/ # PostgreSQL staging table definitions
+│ ├── silver/
+│ │ ├── cleansing/ # Cleansing scripts and rules
+│ │ ├── validation/ # Data quality checks
+│ │ └── transformations/ # Business-rule transformations
+│ └── gold/
+│ ├── warehouse/ # Star schema DDL (fact + dimension tables)
+│ ├── datamarts/ # Subject-area views
+│ └── analytics/ # Analytics-ready exports
+├── pentaho/
+│ ├── transformations/ # .ktr transformation files
+│ └── jobs/ # .kjb orchestration jobs
+├── python/ # Profiling, cleansing, and generation scripts
+├── sql/ # DDL, reporting, and reconciliation queries
+├── metadata/ # Data dictionary and technical metadata
+├── lineage/ # Source-to-target mapping and lineage docs
+├── dashboards/ # Power BI .pbix files
+├── deployment/ # Setup and deployment scripts
+├── tests/ # Data quality and pipeline tests
+└── README.md
+
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| ETL | Pentaho Data Integration (Spoon) |
+| Database | PostgreSQL |
+| Data Profiling / Cleansing | Python (Pandas) |
+| Reporting | Power BI |
+| Version Control | Git & GitHub |
+| Documentation | Markdown / MS Word |
+| Methodology | Agile Scrum |
+
+## Getting Started
+
+### Prerequisites
+
+- PostgreSQL 14+
+- Pentaho Data Integration (Spoon) 9.x
+- Python 3.10+ with `pandas`, `sqlalchemy`, `psycopg2-binary`
+- Power BI Desktop (for dashboard development)
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/<org>/ESADP.git
+cd ESADP
+
+# Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate      # Windows: venv\Scripts\activate
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Create the Bronze/Silver/Gold schemas
+psql -U <user> -d <database> -f sql/ddl/00_create_schemas.sql
+psql -U <user> -d <database> -f sql/ddl/01_bronze_staging.sql
+```
+
+### Running the ingestion pipeline
+
+1. Open Pentaho Spoon and load the transformations from `pentaho/transformations/`.
+2. Configure the PostgreSQL database connection under **File → Database Connections**, using the credentials in `config/`.
+3. Run each transformation, or execute the orchestrating job in `pentaho/jobs/` to run the full Bronze ingestion sequence.
+4. Verify row counts and rejects in the `staging.etl_log` table.
+
+## Project Status
+
+| Sprint | Scope | Status |
+|---|---|---|
+| Sprint 0 | Project initiation, BRD, architecture, backlog | ✅ Complete |
+| Sprint 1 | Source ingestion, staging, data dictionary | 🔄 In progress |
+| Sprint 2 | Profiling, cleansing, star schema, warehouse load | ⬜ Not started |
+| Sprint 3 | Governance, lineage, orchestration, dashboards, release | ⬜ Not started |
+
+## Documentation
+
+| Document | Description |
+|---|---|
+| [`docs/BRD.md`](docs/BRD.md) | Business requirements, stakeholders, scope, source inventory |
+| [`docs/architecture.md`](docs/architecture.md) | Solution architecture and layer responsibilities |
+| [`metadata/data_dictionary.md`](metadata/data_dictionary.md) | Field-level reference for all staged tables |
+| [`lineage/source_to_target_mapping.md`](lineage/source_to_target_mapping.md) | Column-level lineage (Sprint 3) |
+| [`docs/glossary.md`](docs/glossary.md) | Business term definitions |
+
+## Contributing
+
+This is a team academic capstone project. Team members should:
+
+1. Create a feature branch off `main` for each task (`feature/<sprint>-<short-description>`).
+2. Commit incrementally with descriptive messages — one logical change per commit, not a single end-of-sprint commit.
+3. Open a pull request into `main` for review before merging.
+4. Keep `docs/` in sync with any architecture or scope decisions made during development.
+
+## Team
+
+| Name | Registration No. |
+|---|---|
+| Hitashri M | 26MML1024 |
+| Kusuma Sree | 26MML1021 |
+| Krishnaveni M | 26MML1008 |
+
+**Course:** Enterprise Data Engineering Capstone Project — UC19
+**Methodology:** Agile Scrum (3 Sprints)
+
+## License
+
+This project is submitted as part of an academic capstone and is intended for educational use. Source datasets are publicly available under their respective Kaggle licenses (Olist Brazilian E-Commerce, Olist Marketing Funnel).
