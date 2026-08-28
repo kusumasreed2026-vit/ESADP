@@ -104,7 +104,7 @@ ESADP/
 
 ### Setup
 
-```bash
+
 # Clone the repository
 git clone https://github.com/<org>/ESADP.git
 cd ESADP
@@ -133,7 +133,7 @@ psql -U <user> -d <database> -f sql/ddl/01_bronze_staging.sql
 | Sprint | Scope | Status |
 |---|---|---|
 | Sprint 0 | Project initiation, BRD, architecture, backlog | ✅ Complete |
-| Sprint 1 | Source ingestion, staging, data dictionary | 🔄 In progress |
+| Sprint 1 | Source ingestion, staging, data dictionary | ✅ Complete |
 | Sprint 2 | Profiling, cleansing, star schema, warehouse load | ⬜ Not started |
 | Sprint 3 | Governance, lineage, orchestration, dashboards, release | ⬜ Not started |
 
