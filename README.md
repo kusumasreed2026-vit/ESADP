@@ -2,8 +2,8 @@
 
 > A unified sales performance and revenue analytics platform built on a medallion (Bronze–Silver–Gold) data architecture, integrating ten heterogeneous enterprise data sources into a governed PostgreSQL warehouse with executive Power BI reporting.
 
-[![Status](https://img.shields.io/badge/status-in%20progress-yellow)]()
-[![Sprint](https://img.shields.io/badge/sprint-1%20of%203-blue)]()
+[![Status](https://img.shields.io/badge/status-Completed-green)]()
+[![Sprint](https://img.shields.io/badge/sprint-3%20of%203-blue)]()
 [![License](https://img.shields.io/badge/license-Academic%20Use-lightgrey)]()
 
 ---
