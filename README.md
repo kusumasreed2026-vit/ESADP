@@ -132,10 +132,10 @@ psql -U <user> -d <database> -f sql/ddl/01_bronze_staging.sql
 
 | Sprint | Scope | Status |
 |---|---|---|
-| Sprint 0 | Project initiation, BRD, architecture, backlog | ✅ Complete |
-| Sprint 1 | Source ingestion, staging, data dictionary | ✅ Complete |
-| Sprint 2 | Profiling, cleansing, star schema, warehouse load | ⬜ Not started |
-| Sprint 3 | Governance, lineage, orchestration, dashboards, release | ⬜ Not started |
+| Sprint 0 | Project initiation, BRD, architecture, backlog | ✅ Completed |
+| Sprint 1 | Source ingestion, staging, data dictionary | ✅ Completed |
+| Sprint 2 | Profiling, cleansing, star schema, warehouse load | ✅ Completed |
+| Sprint 3 | Governance, lineage, orchestration, dashboards, release | ✅ Completed |
 
 ## Documentation
 
